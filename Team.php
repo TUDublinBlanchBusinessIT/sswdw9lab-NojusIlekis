@@ -18,11 +18,18 @@ class Team {
         $this->totalGoals += $homeScore;
 
         if ($homeScore > $opponentScore) {
-            $this->totalPoints += 3;
+            $this->totalPoints += 3;  
         } elseif ($homeScore == $opponentScore) {
-            $this->totalPoints += 1;
+            $this->totalPoints += 1;  
         }
         
+    }
+
+    public function getGoalAverage() {
+        if ($this->totalGames === 0) {
+            return 0;
+        }
+        return $this->totalGoals / $this->totalGames;
     }
 
     public function displayStats() {
@@ -30,6 +37,7 @@ class Team {
         echo "Total Points: $this->totalPoints\n";
         echo "Total Games: $this->totalGames\n";
         echo "Total Goals: $this->totalGoals\n";
+        echo "Goal Average: " . $this->getGoalAverage() . "\n";
     }
 }
 
